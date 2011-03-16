@@ -6,11 +6,12 @@ Gem::Specification.new do |s|
   s.name        = "fickle"
   s.version     = Fickle::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["TODO: Write your name"]
-  s.email       = ["TODO: Write your email address"]
+  s.authors     = ["chrisrhoden"]
+  s.email       = ["chris@lazerclub.co"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{The feature library for rails that can't make up its mind}
+  s.description = %q{Fickle lets you turn features on and off at will in your rails app using a web interface.
+                     It also lets you manage features on a model-by-model basis (maybe users?)}.gsub('                     ','')
 
   s.rubyforge_project = "fickle"
 
