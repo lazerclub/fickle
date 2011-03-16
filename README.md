@@ -14,7 +14,7 @@ Quickstart
 
 ### app/views/layouts/application.html.erb
 
-    <%- if feature_enabled? :my_totally_sweet_feature >
+    <%- if feature_enabled? :my_totally_sweet_feature %>
       <!--
         My totally sweet code
       -->
