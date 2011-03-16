@@ -1,0 +1,3 @@
+module Fickle
+  # Your code goes here...
+end
