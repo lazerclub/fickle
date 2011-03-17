@@ -16,6 +16,7 @@ Gem::Specification.new do |s|
   s.rubyforge_project = "fickle"
   
   s.add_development_dependency 'rspec', '~> 2.4.0'
+  s.add_development_dependency 'rails', '~> 3.0.0'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")

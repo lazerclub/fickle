@@ -4,7 +4,12 @@ module Fickle
   
   def self.setup!
     Class.send :include, Fickle::ClassMethods unless Class.respond_to? :has_featureset
-    ApplicationHelper.send :include, Fickle::ViewHelpers if defined? ApplicationHelper
+    begin
+      ApplicationHelper
+    rescue Exception; nil
+    else
+      ApplicationHelper.send :include, Fickle::ViewHelpers
+    end
   end
   
   autoload :FeatureSet, 'fickle/feature_set'
@@ -12,6 +17,7 @@ module Fickle
   autoload :Railtie, 'fickle/railtie'
   autoload :VERSION, 'fickle/version'
   autoload :ViewHelpers, 'fickle/view_helpers'
+  autoload :ModelExtensions, 'fickle/model_extensions'
   
   require 'fickle/railtie' if defined? Rails
   

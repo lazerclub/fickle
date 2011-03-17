@@ -1,1 +1,1 @@
-require 'fickle'
+require 'test_project/config/application'

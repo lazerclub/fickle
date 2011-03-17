@@ -6,7 +6,6 @@ module Fickle
     end
     
     config.to_prepare do
-      Rails.logger.debug("Loading up Fickle")
       Fickle.setup!
     end
   end
