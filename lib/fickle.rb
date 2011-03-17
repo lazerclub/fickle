@@ -10,6 +10,12 @@ module Fickle
     else
       ApplicationHelper.send :include, Fickle::ViewHelpers
     end
+    begin
+      ActionDispatch::Routing::Mapper
+    rescue Exception; nil
+    else
+      ActionDispatch::Routing::Mapper.send :include, Fickle::Routes
+    end
   end
   
   autoload :FeatureSet, 'fickle/feature_set'
@@ -18,6 +24,7 @@ module Fickle
   autoload :VERSION, 'fickle/version'
   autoload :ViewHelpers, 'fickle/view_helpers'
   autoload :ModelExtensions, 'fickle/model_extensions'
+  autoload :Routes, 'fickle/routes'
   
   require 'fickle/railtie' if defined? Rails
   

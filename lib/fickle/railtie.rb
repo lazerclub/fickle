@@ -1,9 +1,5 @@
 module Fickle
-  class Railtie < Rails::Railtie
-    
-    generators do
-      
-    end
+  class Railtie < Rails::Engine
     
     config.to_prepare do
       Fickle.setup!

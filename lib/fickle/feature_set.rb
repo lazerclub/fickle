@@ -21,5 +21,7 @@ module Fickle
       @features[name] || disable_feature(name)
     end
     
+    attr_reader :features
+    
   end
 end
