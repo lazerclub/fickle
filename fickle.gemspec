@@ -14,6 +14,8 @@ Gem::Specification.new do |s|
                      It also lets you manage features on a model-by-model basis (maybe users?)}.gsub('                     ','')
 
   s.rubyforge_project = "fickle"
+  
+  s.add_development_dependency 'rspec', '~> 2.4.0'
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
