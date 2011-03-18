@@ -2,29 +2,71 @@ fickle
 ======
 *Don't make up your mind.*
 
-Fickle is a feature framework for rails 3. It is currently under heavy development and
+Fickle is a feature engine for Rails 3. It is currently under heavy development and
 is not stable in any sense of the word. Especially not the emotional sense.
+
+Unlike other solutions, fickle lets you manage your features without __opening a file__,
+__committing to a repository__, __performing a deploy__, or __breaking out ssh__. Just
+point a browser at your application and bend it to your will!
+
+Not only that, but fickle allows you to override your global features by mixing feature-set
+functionality into __any model in your application__. If you want to restrict some experimental
+features to a group of beta testers, it's easy to implement. If you want to enable every
+feature when you're logged in as, say, "guinea_pig," you got it. 
 
 Quickstart
 ----------
 
-### Gemfile
+1.  Add fickle to your Gemfile
+  
+        gem 'fickle'
+    
+2.  Run the generator
 
-    gem 'fickle'
+      > ./script/rails generate fickle:install
+    
+3.  Add feature switches
+    
+        <%- if feature_enabled? :my_totally_sweet_feature %>
+          <!--
+            My totally sweet code
+          -->
+        <%- else %>
+          <!--
+            My slightly less sweet code
+          -->
+        <%- end %>
 
-### app/views/layouts/application.html.erb
 
-    <%- if feature_enabled? :my_totally_sweet_feature %>
-      <!--
-        My totally sweet code
-      -->
-    <%- else %>
-      <!--
-        My slightly less sweet code
-      -->
-    <%- end %>
+4.  Administer!
 
-BUT! Fickle is designed to do more! Oh, so much more.
+    ![Fickle Administrative Panel](http://i.imgur.com/Kiamq.png "http://localhost:3000/features")
+    
+Web Interface
+-------------
+
+Fickle includes a web interface for managing your features. You can globally turn features on and off,
+and you can manage them on a model-by-model basis. You can even hardstop a feature if it starts causing
+you trouble.
+
+The `fickle:install` generator adds this line to your `config/routes.rb` file:
+
+    fickle_admin 'features'
+    
+You can change this line for more advanced control, or you can remove it altogether if you don't want
+to use the web interface.
+
+The following options are currently supported:
+
+    path         - the first argument, where the fickle admin panel should live.
+    :restrict_on - symbol which refers to a method in ApplicationController for
+                   access restriction (ex. :current_user). If provided, fickle
+                   will return a 404 unless the result of this method call returns
+                   true for "can_administer_fickle?"
+    :controller  - The controller to use. If you would like to override fickle's
+                   behavior, you can subclass "Fickle::FeaturesController" with
+                   your own controller and provide the name here.
+
 
 Advanced Features
 -----------------
@@ -35,7 +77,7 @@ Let's say you want to limit features on a per-user basis.
 
     class User < ActiveRecord::Base
       
-      has_featureset
+      has_feature_set
       
     end
     
@@ -53,19 +95,6 @@ Let's say you want to limit features on a per-user basis.
     end
 
 You can also access this method in the views. Cause, you know, it's on the model.
-
-Web Interface
--------------
-
-Fickle includes a web interface for managing your features. You can globally turn features on and off,
-and you can manage them on a model-by-model basis. You can even hardstop a feature if it starts causing
-you trouble.
-
-### config/routes.rb
-
-    fickle_admin 'features', :restrict_on => :current_user
-    
-This will return a 404 unless `current_user.can_administer_fickle?`
 
 Tips/tricks
 -----------
