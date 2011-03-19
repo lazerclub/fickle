@@ -40,7 +40,7 @@ Quickstart
 
 4.  Administer!
 
-    ![Fickle Administrative Panel](http://i.imgur.com/r4Ch4.png "http://localhost:3000/features")
+    ![Fickle Administrative Panel](http://i.imgur.com/a78f3.png "http://localhost:3000/features")
     
 Web Interface
 -------------
