@@ -2,8 +2,20 @@
 <html>
   <head>
     <title>Fickle!</title>
+    <%= stylesheet_link_tag 'fickle/fickle' %>
   </head>
   <body>
-    <%= yield %>
+    <h1>Fickle</h1>
+    <ul id="tabs">
+      <li><%= link_to 'Features', fickle_features_path %>
+    <%# @models.each do |model| 
+      <li><%= link_to model.to_s.pluralize, fickle_model_features_path(model) </li>
+     end %>
+    </ul>
+    <div id="main">
+      <%= yield %>
+    </div>
+    <%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js' %>
+    <%= javascript_include_tag 'fickle' %>
   </body>
 </html>

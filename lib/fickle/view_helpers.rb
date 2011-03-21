@@ -1,7 +1,7 @@
 module Fickle
   module ViewHelpers
     def feature_enabled?(feature)
-      FeatureSet.for('global').enabled?(feature)
+      Fickle::Config.backend.feature_set('views').enabled?(feature)
     end
   end
 end

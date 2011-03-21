@@ -18,6 +18,10 @@ module Fickle
     end
   end
   
+  def self.config
+    yield Fickle::Config if block_given?
+  end
+  
   autoload :FeatureSet, 'fickle/feature_set'
   autoload :ClassMethods, 'fickle/class_methods'
   autoload :Railtie, 'fickle/railtie'
@@ -25,6 +29,10 @@ module Fickle
   autoload :ViewHelpers, 'fickle/view_helpers'
   autoload :ModelExtensions, 'fickle/model_extensions'
   autoload :Routes, 'fickle/routes'
+  autoload :Config, 'fickle/config'
+  autoload :Backends, 'fickle/backends'
+  autoload :AbstractFeatureSet, 'fickle/abstract_feature_set'
+  autoload :AbstractBackend, 'fickle/abstract_backend'
   
   require 'fickle/railtie' if defined? Rails
   

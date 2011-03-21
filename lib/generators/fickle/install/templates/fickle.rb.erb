@@ -1,0 +1,4 @@
+Fickle.config do |config|
+  config.default_state = <%= options.default_enabled? %>
+  config.backend = Fickle::Backends::Memory.new
+end

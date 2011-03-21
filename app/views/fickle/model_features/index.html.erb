@@ -1,0 +1,5 @@
+<ul id="features">
+<%- @features.each do |feature| %>
+  <li><span class="feature_name"><%= feature[0].to_s.humanize %></span><input type='checkbox' name='features[<%= feature[0] %>]'<%= ' checked' if feature[1] %>/></li>
+<%- end %>
+</ul>

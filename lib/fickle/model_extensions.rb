@@ -13,7 +13,7 @@ module Fickle
     end
     
     def feature_set
-      @feature_set = Fickle::FeatureSet.for("#{self.class.name}-#{fickle_id}")
+      @feature_set = Fickle::Config.backend.feature_set(fickle_id, self.class.name)
     end
     
     def fickle_id
